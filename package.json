@@ -1,0 +1,27 @@
+{
+  "name": "xterm-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "lodash": "^4.17.21",
+    "socket.io-client": "^2.4.0",
+    "table": "^6.7.1",
+    "xterm": "^4.14.1",
+    "xterm-addon-attach": "^0.6.0",
+    "xterm-addon-fit": "^0.5.0",
+    "xterm-addon-search": "^0.8.1",
+    "xterm-addon-unicode11": "^0.3.0",
+    "xterm-addon-webgl": "^0.11.2"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}
