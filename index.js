@@ -9,7 +9,7 @@ import { WebglAddon } from "xterm-addon-webgl";
 import io from "socket.io-client";
 import { AttachAddon } from "xterm-addon-attach";
 import "xterm/css/xterm.css";
-import { containsChinese } from "./utils";
+import { containsChinese, currencyFormat, getTheme } from "./utils";
 
 let terminal;
 let current = 0;
@@ -20,27 +20,6 @@ const NEWLINE = "\r\n";
 const BACKSPACE = "\b \b";
 const commandHistory = [];
 const LOCAL_URL = "localhost:8888";
-const getTheme = (light = false) => ({
-  foreground: light ? "#536870" : "#fff",
-  background: light ? "#fcf4dc" : "#000",
-  cursor: "#536870",
-  black: "#002831",
-  brightBlack: "#001e27",
-  red: "#d11c24",
-  brightRed: "#bd3613",
-  green: "#06989a",
-  brightGreen: "#475b62",
-  yellow: "#fce94f",
-  brightYellow: "#536870",
-  blue: "#3465a4",
-  brightBlue: "#708284",
-  magenta: "#c61c6f",
-  brightMagenta: "#5956ba",
-  cyan: "#259286",
-  brightCyan: "#819090",
-  white: "#eae3cb",
-  brightWhite: "#fcf4dc",
-});
 const fitAddon = new FitAddon();
 const getTableConfig = (border) => ({
   border: getBorderCharacters(border),
@@ -52,12 +31,6 @@ const wrapMsg = (msg) => {
   terminal.write(msg);
   terminal.writeln("");
   prompt(terminal);
-};
-const currencyFormat = (currency) => {
-  const k = 10000;
-  const units = ["", "万", "亿", "万亿"];
-  const i = Math.floor(Math.log(currency) / Math.log(k));
-  return `${(currency / Math.pow(k, i)).toFixed(2)}${units[i]}`;
 };
 // const onData = curry(_onData);
 const terminalContainer = document.getElementById("terminal-container");
