@@ -19,7 +19,7 @@ let command = "";
 const NEWLINE = "\r\n";
 const BACKSPACE = "\b \b";
 const commandHistory = [];
-const LOCAL_URL = "localhost:8888";
+const LOCAL_URL = "112.124.23.240:8888";
 const fitAddon = new FitAddon();
 const getTableConfig = (border) => ({
   border: getBorderCharacters(border),
@@ -44,7 +44,7 @@ const setTerminalSize = () => {
 
   fitAddon.fit();
 };
-const socket = io("ws://localhost:8888");
+const socket = io("ws://112.124.23.240:8888");
 
 socket.on("connect", () => {
   socket.send("Hello");
